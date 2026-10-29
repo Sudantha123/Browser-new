@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
         root.addView(header)
         address = EditText(this).apply {
             hint = "Search or type URL"; setHintTextColor(Color.rgb(155, 174, 196)); setTextColor(white); textSize = 15f
-            singleLine = true; imeOptions = EditorInfo.IME_ACTION_GO; setPadding(dp(16), 0, dp(14), 0)
+            setSingleLine(true); imeOptions = EditorInfo.IME_ACTION_GO; setPadding(dp(16), 0, dp(14), 0)
             background = android.graphics.drawable.GradientDrawable().apply { setColor(panel); cornerRadius = dp(24).toFloat(); setStroke(dp(1), Color.rgb(50, 79, 105)) }
             setOnEditorActionListener { _, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_GO || event?.keyCode == KeyEvent.KEYCODE_ENTER) { navigate(text.toString()); true } else false
