@@ -218,7 +218,7 @@ class MainActivity : ComponentActivity() {
             CookieManager.getInstance().getCookie(url)?.let { request.addRequestHeader("Cookie", it) }; agent?.let { request.addRequestHeader("User-Agent", it) }
             if (android.os.Build.VERSION.SDK_INT >= 29) request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename)
             (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request); toast("Download queued")
-        } catch (e: Exception) { toast("Download failed: ${'$'}{e.message ?: "unsupported resource"}") }
+        } catch (e: Exception) { toast("Download failed: " + (e.message ?: "unsupported resource")) }
     }
     private fun showDownloads() { try { startActivity(Intent(DownloadManager.ACTION_VIEW_DOWNLOADS)) } catch (_: Exception) { toast("Open Downloads in your file manager") } }
     private fun pref(key: String) = getSharedPreferences("browser", MODE_PRIVATE).getString(key, "") ?: ""
